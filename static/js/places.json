@@ -1,0 +1,20 @@
+{
+  "places": [
+    {
+      "name": "Taman Alumni",
+      "coordinates": [-7.280441903697102, 112.79262965176238]
+    },
+    {
+      "name": "Perpustakaan ITS",
+      "coordinates": [-7.2807800408200505, 112.79590459980936]
+    },
+    {
+      "name": "Department Teknik Informatika",
+      "coordinates": [-7.279589557391669, 112.79822978244971]
+    },
+    {
+      "name": "Kantin Pusat",
+      "coordinates": [-7.283726874349753, 112.7939552657868]
+    }
+  ]
+}

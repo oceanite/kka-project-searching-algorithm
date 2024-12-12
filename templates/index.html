@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A* Route Finder</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <h1>Find a Route</h1>
+    <label for="start">Start: </label>
+    <select id="start">
+      <!-- Options populated dynamically from places.json -->
+    </select>
+
+    <label for="end">End: </label>
+    <select id="end">
+      <!-- Options populated dynamically from places.json -->
+    </select>
+
+    <button id="findRouteBtn">Find Route</button>
+    <div id="map" style="width: 100%; height: 500px"></div>
+
+    <script src="/static/js/script.js"></script>
+  </body>
+</html>
