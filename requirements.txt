@@ -2,4 +2,5 @@ Flask
 osmnx
 networkx
 geopy
-gunicorn  # Optional if deploying in future
+gunicorn  
+flask_cors
