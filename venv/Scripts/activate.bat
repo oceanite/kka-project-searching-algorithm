@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\Acer\Documents\Caca\College\KKA\kka-project-searching-algorithm\venv
+set VIRTUAL_ENV=C:\Users\USER\a-dea\kuliah\sems 3\KKA\project\project-eas\kka-project-searching-algorithm\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

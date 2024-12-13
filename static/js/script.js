@@ -1,7 +1,66 @@
 // Wait until the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", async () => {
-  const startSelect = document.getElementById("start");
-  const endSelect = document.getElementById("end");
+  const startSearchInput = document.getElementById("startSearch");
+  const startResultsContainer = document.getElementById("startResults");
+
+  const endSearchInput = document.getElementById("endSearch");
+  const endResultsContainer = document.getElementById("endResults");
+
+  let places = []; // To store all places loaded from places.json
+
+  // Load places from places.json
+  async function loadPlaces() {
+    try {
+      const response = await fetch("/static/js/places.json");
+      if (!response.ok) {
+        throw new Error(`Error fetching places.json: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log("Loaded places:", data);
+      places = data.places; // Save places for later use
+    } catch (error) {
+      console.error("Failed to load places:", error);
+    }
+  }
+
+  // Display autocomplete suggestions
+  function showSuggestions(inputElement, resultsContainer, query) {
+    resultsContainer.innerHTML = ""; // Clear existing suggestions
+
+    if (query.trim() === "") return; // If query is empty, don't show anything
+
+    const filteredPlaces = places.filter((place) =>
+      place.name.toLowerCase().includes(query.toLowerCase())
+    );
+
+    // Populate the suggestions container
+    filteredPlaces.forEach((place) => {
+      const suggestionItem = document.createElement("div");
+      suggestionItem.classList.add("suggestion-item");
+      suggestionItem.innerText = place.name;
+      suggestionItem.dataset.coordinates = JSON.stringify(place.coordinates);
+
+      // Add click event to fill input and hide suggestions
+      suggestionItem.addEventListener("click", () => {
+        inputElement.value = place.name; // Set the input value
+        inputElement.dataset.coordinates = suggestionItem.dataset.coordinates; // Store coordinates in the input
+        resultsContainer.innerHTML = ""; // Clear suggestions
+      });
+
+      resultsContainer.appendChild(suggestionItem);
+    });
+  }
+
+  // Add event listeners to the start and end search inputs
+  startSearchInput.addEventListener("input", (e) => {
+    const query = e.target.value;
+    showSuggestions(startSearchInput, startResultsContainer, query);
+  });
+
+  endSearchInput.addEventListener("input", (e) => {
+    const query = e.target.value;
+    showSuggestions(endSearchInput, endResultsContainer, query);
+  });
 
   // Initialize the map and set a default view
   const map = L.map("map").setView([-7.2819, 112.7945], 16); // Default: Main Gate coordinates
@@ -46,74 +105,37 @@ document.addEventListener("DOMContentLoaded", async () => {
     map.fitBounds([startCoords, endCoords]);
   }
 
-  // Populate the dropdowns with places from places.json
-  async function populateDropdowns() {
-    try {
-      const response = await fetch("/static/js/places.json");
-      if (!response.ok) {
-        throw new Error(`Error fetching places.json: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log("Loaded places:", data);
-
-      data.places.forEach((place) => {
-        // Create options for the Start dropdown
-        const startOption = document.createElement("option");
-        startOption.value = JSON.stringify(place.coordinates); // Store coordinates as a string
-        startOption.innerText = place.name;
-        startSelect.appendChild(startOption);
-
-        // Create options for the End dropdown
-        const endOption = document.createElement("option");
-        endOption.value = JSON.stringify(place.coordinates); // Store coordinates as a string
-        endOption.innerText = place.name;
-        endSelect.appendChild(endOption);
-      });
-
-      console.log("Dropdowns populated successfully.");
-    } catch (error) {
-      console.error("Failed to populate dropdowns:", error);
-    }
-  }
-
   // Handle the "Find Route" button click
   document
     .getElementById("findRouteBtn")
     .addEventListener("click", async () => {
-      const startSelect = document.getElementById("start");
-      const endSelect = document.getElementById("end");
+      const startCoords = JSON.parse(
+        startSearchInput.dataset.coordinates || null
+      );
+      const endCoords = JSON.parse(endSearchInput.dataset.coordinates || null);
 
-      // Get the selected coordinates from the dropdown menus
-      const startCoords = JSON.parse(startSelect.value);
-      const endCoords = JSON.parse(endSelect.value);
-      console.log("start coordinate : " + startCoords);
-      console.log("end coordinate : " + endCoords);
-      // Construct the routeData object
-      const routeData = {
-        start: startCoords,
-        end: endCoords,
-      };
+      if (!startCoords || !endCoords) {
+        alert("Please select both start and end points from the suggestions.");
+        return;
+      }
+
+      console.log("Start coordinates:", startCoords);
+      console.log("End coordinates:", endCoords);
+
+      const routeData = { start: startCoords, end: endCoords };
 
       try {
-        // Send coordinates to the backend for route calculation
         const routeResponse = await fetch("http://127.0.0.1:5000/find_route", {
-          // Corrected URL
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(routeData),
         });
 
-        // Check if the response is OK (status 200)
         if (!routeResponse.ok) {
-          console.error("HTTP error:", routeResponse.status);
           alert("Error fetching the route from the server.");
           return;
-        } else {
-          console.log("success fetching the route");
         }
 
-        // Parse the response as JSON
         const routeDataResponse = await routeResponse.json();
         console.log("Route received:", routeDataResponse);
 
@@ -122,7 +144,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         // Draw the route on the map if it's valid
         if (routeDataResponse.route) {
-          let latlngs = routeDataResponse.route.map((coord) => [
+          const latlngs = routeDataResponse.route.map((coord) => [
             coord[0],
             coord[1],
           ]);
@@ -136,6 +158,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
 
-  // Populate the dropdowns on page load
-  populateDropdowns();
+  // Load the places data when the page is ready
+  loadPlaces();
 });
