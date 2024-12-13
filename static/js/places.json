@@ -10,7 +10,7 @@
     },
     {
       "name": "Department Teknik Informatika",
-      "coordinates": [-7.2795789150339445, 112.79758605202318]
+      "coordinates": [-7.279589557391669, 112.79822978244971]
     },
     {
       "name": "Kantin Pusat",
@@ -122,7 +122,228 @@
     },
     {
       "name": "CCWS IKOMA ITS",
+<<<<<<< HEAD
       "coordinates": [-7.286510993946539, 112.7939409344872]
     }
+=======
+      "coordinates": [-7.286371260393265, 112.79473912842887]
+    },
+    {
+      "name": "Departemen Biologi",
+      "coordinates": [-7.285747190749486, 112.79391793756064]
+    },
+    {
+      "name": "Departemen Matematika",
+      "coordinates": [-7.2849895489903265, 112.79502883132083]
+    },
+    {
+      "name": "Departemen Fisika",
+      "coordinates": [-7.284447930459855, 112.7944875625159]
+    },
+    {
+      "name": "Departemen Kimia",
+      "coordinates": [-7.28383411323047, 112.79511554141153]
+    },
+    {
+      "name": "Departemen Teknik Biomedik",
+      "coordinates": [-7.284776724280463, 112.79645427976295]
+    },
+    {
+      "name": "Departemen Teknologi Informasi",
+      "coordinates": [-7.285066355498229, 112.79622554433253]
+    },
+    {
+      "name": "Parkiran Fasor",
+      "coordinates": [-7.284031728266671, 112.79344203877206]
+    },
+    {
+      "name": "Departemen PWK",
+      "coordinates": [-7.279332813915263, 112.79428335463373]
+    },
+    {
+      "name": "Departemen Studi Pembangunan",
+      "coordinates": [-7.2824866851401415, 112.79631757131523]
+    },
+    {
+      "name": "Departemen Teknik Lingkungan",
+      "coordinates": [-7.279697783551645, 112.79211937605595]
+    },
+    {
+      "name": "Departemen Teknologi Kedokteran",
+      "coordinates": [-7.28042058029229, 112.79525689328587]
+    },
+    {
+      "name": "Departemen Teknik Geofisika",
+      "coordinates": [-7.27986599180554, 112.7964752903671]
+    },
+    {
+      "name": "Departemen Teknik Geomatika",
+      "coordinates": [-7.279687183545601, 112.79587880200492]
+    },
+    {
+      "name": "Departemen Arsitektur",
+      "coordinates": [-7.28088476512524, 112.79465886946174]
+    },
+    {
+      "name": "Departemen Statistika Bisnis",
+      "coordinates": [-7.278171636998349, 112.79380942105682]
+    },
+    {
+      "name": "Gedung Despro ITS",
+      "coordinates": [-7.2785929923303865, 112.7972851244644]
+    },
+    {
+      "name": "Departemen DKV",
+      "coordinates": [-7.278208521786273, 112.79790138666013]
+    },
+    {
+      "name": "Departemen Teknik Instrumentasi",
+      "coordinates": [-7.278153794603731, 112.79333748058274]
+    },
+    {
+      "name": "Departemen Material dan Metalurgi",
+      "coordinates": [-7.285019797699911, 112.79838671734984]
+    },
+    {
+      "name": "Departemen Teknik Industri ",
+      "coordinates": [-7.283752635168405, 112.79850634803954]
+    },
+    {
+      "name": "Departemen Menejemen Bisnis ",
+      "coordinates": [-7.277562939936586, 112.7935668578239]
+    },
+    {
+      "name": "Pascasarjana ITS",
+      "coordinates": [-7.280514068676257, 112.79640321549633]
+    },
+    {
+      "name": " Departemen Teknik Kimia Industri",
+      "coordinates": [-7.2785771947945745, 112.79337998851356]
+    },
+    {
+      "name": "Plaza Dr. Angka",
+      "coordinates": [-7.282217907891413, 112.79546641549632]
+    },
+    {
+      "name": "SCC ITS",
+      "coordinates": [-7.283136654581932, 112.79418979459093]
+    },
+    {
+      "name": "Lapangan Futsal PLN",
+      "coordinates": [-7.287221025209225, 112.79313025834074]
+    },
+    {
+      "name": "K1mart",
+      "coordinates": [-7.286418224911768, 112.79411964121786]
+    },
+    {
+      "name": "International Dormitory ITS",
+      "coordinates": [-7.286770067221093, 112.79626241178934]
+    },
+    {
+      "name": "Danau 8 ITS",
+      "coordinates": [-7.286358504627664, 112.79639162891195]
+    },
+    {
+      "name": "Lapangan Perpustakaan ITS",
+      "coordinates": [-7.281805453327072, 112.79516647464708]
+    },
+    {
+      "name": "Departemen Teknik Perkapalan",
+      "coordinates": [-7.282451893477682, 112.79646756263709]
+    },
+    {
+      "name": "Gedung Dharma Wanita Persatuan ITS",
+      "coordinates": [-7.288372701621463, 112.79651625675214]
+    },
+    {
+      "name": "Bank BNI",
+      "coordinates": [-7.283640217804597, 112.79446435491496]
+    },
+    {
+      "name": "Bank BRI",
+      "coordinates": [-7.2837817343154025, 112.793844386447]
+    },
+    {
+      "name": "Bank Mandiri",
+      "coordinates": [-7.2840249592788675, 112.79377332528065]
+    },
+    {
+      "name": "Auditorium Twknik Industri",
+      "coordinates": [-7.283393835709456, 112.79750476707167]
+    },
+    {
+      "name": "Tekno Sains Academy",
+      "coordinates": [-7.281217486717684, 112.79719363082268]
+    },
+    {
+      "name": "Departemen Desain Interior",
+      "coordinates": [-7.279073054285419, 112.79624412882208]
+    },
+    {
+      "name": "Gedung Forensik ITS",
+      "coordinates": [-7.276841574971217, 112.79675892544715]
+    },
+    {
+      "name": "UPBG ITS",
+      "coordinates": [-7.276856521277229, 112.7933435875443]
+    },
+    {
+      "name": "Musholla Teknik Sipil",
+      "coordinates": [-7.280224409909124, 112.79339381311446]
+    },
+    {
+      "name": "Bank Syariah Indonesia",
+      "coordinates": [-7.284464127258507, 112.7932230462201]
+    },
+    {
+      "name": "Lapangan Tenis ITS",
+      "coordinates": [-7.28360501815571, 112.79299378644419]
+    },
+    {
+      "name": "Kantin Teknik Kimia",
+      "coordinates": [-7.282581768141672, 112.79712645583054]
+    },
+    {
+      "name": "Kantin FTK ITS",
+      "coordinates": [-7.281894282970872, 112.7967689781511]
+    },
+    {
+      "name": "Kantin Informatika ITS",
+      "coordinates": [-7.279995281210967, 112.79722298893245]
+    },
+    {
+      "name": "Kantin Geomatika",
+      "coordinates": [-7.280117335620435, 112.79470134527612]
+    },
+    {
+      "name": "Direktorat Kemahasiswaan ITS",
+      "coordinates": [-7.282155672691516, 112.7943852117851]
+    },
+    {
+      "name": "Lapangan Voli ITS",
+      "coordinates": [-7.283789262282648, 112.79282684835002]
+    },
+    {
+      "name": "Kator Pos ITS",
+      "coordinates": [-7.2836482523437605, 112.79422159705327]
+    },
+    {
+      "name": "Danau Fisika",
+      "coordinates": [-7.284156106288667, 112.79473070961163]
+    },
+    {
+      "name": "Taman Teknik Mesin",
+      "coordinates": [-7.284553917717419, 112.79599461925203]
+    },
+    {
+      "name": "Markas ITS Team Sapuangin",
+      "coordinates": [-7.284168161190305, 112.79675296504747]
+    },
+    {
+      "name": "Marine Park",
+      "coordinates": [-7.282032918541214, 112.79622953412657]
+    },
+>>>>>>> 529c5a8c3e6238627abf3c3cb0bae5894f95644e
   ]
 }
