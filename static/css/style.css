@@ -1,0 +1,76 @@
+/* General styles for the page */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #008a43;
+    background-image: url("https://www.transparenttextures.com/patterns/my-little-plaid.png");
+    color: #ffffff;
+  }
+  
+  /* Style for the map container */
+  #map {
+    width: 100%;
+    height: 80vh;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Center the content */
+  .container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  /* Style for dropdowns */
+  select {
+    width: 30%;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #2e9900;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style for the button */
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Style for error messages */
+  .alert {
+    color: #d9534f;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    select {
+      width: 90%;
+    }
+  
+    button {
+      width: 90%;
+    }
+  }
+  
