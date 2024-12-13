@@ -32,46 +32,66 @@ def find_nearest_node(graph, target_coords):
             nearest_node = node
     return nearest_node
 
-# Custom A* Algorithm Implementation
 def custom_astar(graph, start_node, end_node):
+    # Fungsi untuk menghitung jarak heuristik antara dua node
     def heuristic(node1, node2):
-        # Haversine distance as heuristic
+        # Menggunakan jarak haversine (geodesic) sebagai heuristik
+        # Mengambil koordinat geografis node1 dan node2 dari atribut 'x' (longitude) dan 'y' (latitude)
         coords1 = (float(graph.nodes[node1]['y']), float(graph.nodes[node1]['x']))
         coords2 = (float(graph.nodes[node2]['y']), float(graph.nodes[node2]['x']))
+        # Menghitung jarak dalam meter antara dua koordinat
         return geodesic(coords1, coords2).meters
 
+    # Inisialisasi open set sebagai priority queue (min-heap) untuk menyimpan node yang akan dievaluasi
     open_set = []
-    heapq.heappush(open_set, (0, start_node))  # Priority queue: (cost, node)
-    came_from = {}  # To reconstruct the path
-    g_score = {node: float('inf') for node in graph.nodes}
-    g_score[start_node] = 0
-    f_score = {node: float('inf') for node in graph.nodes}
-    f_score[start_node] = heuristic(start_node, end_node)
+    heapq.heappush(open_set, (0, start_node))  # Menambahkan (nilai f_score, node awal) ke open_set
 
+    # Dictionary untuk melacak dari mana node saat ini berasal (untuk merekonstruksi jalur)
+    came_from = {}
+
+    # Dictionary untuk menyimpan g_score (biaya kumulatif terpendek dari node awal ke setiap node)
+    g_score = {node: float('inf') for node in graph.nodes}
+    g_score[start_node] = 0  # Biaya ke node awal adalah 0
+
+    # Dictionary untuk menyimpan f_score (perkiraan total biaya dari node awal ke tujuan melalui node ini)
+    f_score = {node: float('inf') for node in graph.nodes}
+    f_score[start_node] = heuristic(start_node, end_node)  # Perkiraan biaya awal = heuristik dari start_node ke end_node
+
+    # Loop utama untuk mencari jalur
     while open_set:
+        # Mengambil node dengan nilai f_score terendah dari open_set
         _, current = heapq.heappop(open_set)
 
+        # Jika node saat ini adalah node tujuan, jalur ditemukan
         if current == end_node:
-            # Reconstruct the path
+            # Rekonstruksi jalur dari end_node ke start_node menggunakan came_from
             path = []
             while current in came_from:
                 path.append(current)
                 current = came_from[current]
             path.append(start_node)
-            return path[::-1]  # Reverse the path
+            return path[::-1]  # Membalikkan jalur agar urut dari start_node ke end_node
 
+        # Mengevaluasi semua tetangga dari node saat ini
         for neighbor in graph.neighbors(current):
-            # Edge weight (assumes a 'weight' attribute exists in the graph)
+            # Ambil bobot edge dari atribut 'weight' (default = 1.0 jika atribut tidak ada)
             weight = graph[current][neighbor].get('weight', 1.0)
+            # Hitung g_score sementara untuk neighbor
             tentative_g_score = g_score[current] + weight
 
+            # Jika g_score sementara lebih kecil dari g_score sebelumnya untuk neighbor
             if tentative_g_score < g_score[neighbor]:
+                # Perbarui jalur terbaik ke neighbor
                 came_from[neighbor] = current
+                # Perbarui g_score dan f_score untuk neighbor
                 g_score[neighbor] = tentative_g_score
                 f_score[neighbor] = g_score[neighbor] + heuristic(neighbor, end_node)
+                # Tambahkan neighbor ke open_set dengan nilai f_score-nya
                 heapq.heappush(open_set, (f_score[neighbor], neighbor))
 
-    return None  # No path found
+    # Jika loop selesai tanpa menemukan jalur, kembalikan None
+    return None  # Tidak ada jalur yang ditemukan
+
 
 # Home route
 @app.route('/')
